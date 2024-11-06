@@ -3,9 +3,9 @@ import { useFavorites } from '../context/FavoriteContext';
 import { getHeroes } from '../services/marvelApi';
 import HeroCard from './HeroCard';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import HeroModal from './HeroModal'; // Importação correta de HeroModal
-import { getHeroComics } from '../services/marvelApi'; // Verifique se essa função existe
-import { FaHeart, FaSearch } from 'react-icons/fa'; // Importa os ícones de coração e lupa
+import HeroModal from './HeroModal';
+import { getHeroComics } from '../services/marvelApi';
+import { FaHeart, FaSearch } from 'react-icons/fa';
 
 const HeroList: React.FC = () => {
   const { favorites, toggleFavorite } = useFavorites();
@@ -14,7 +14,7 @@ const HeroList: React.FC = () => {
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState('');
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-  const [activeHeroId, setActiveHeroId] = useState<number | null>(null);
+  const [activeHero, setActiveHero] = useState<any | null>(null);
   const [activeHeroComics, setActiveHeroComics] = useState<any[]>([]);
 
   // Função para buscar heróis da API
@@ -54,15 +54,15 @@ const HeroList: React.FC = () => {
     : heroes;
 
   // Função para abrir o modal do herói e buscar seus quadrinhos
-  const openHeroModal = async (heroId: number) => {
-    setActiveHeroId(heroId);
-    const heroComics = await getHeroComics(heroId);
+  const openHeroModal = async (hero: any) => {
+    setActiveHero(hero);
+    const heroComics = await getHeroComics(hero.id);
     setActiveHeroComics(heroComics);
   };
 
   // Função para fechar o modal
   const closeHeroModal = () => {
-    setActiveHeroId(null);
+    setActiveHero(null);
     setActiveHeroComics([]);
   };
 
@@ -99,17 +99,19 @@ const HeroList: React.FC = () => {
               key={hero.id}
               hero={hero}
               onToggleFavorite={toggleFavorite}
-              openHeroModal={openHeroModal}
+              openHeroModal={() => openHeroModal(hero)}
               closeHeroModal={closeHeroModal}
-              isActive={activeHeroId === hero.id}
+              isActive={activeHero?.id === hero.id}
             />
           ))}
         </div>
       </InfiniteScroll>
 
-      {activeHeroId && (
+      {activeHero && (
         <HeroModal
-          heroId={activeHeroId}
+          heroName={activeHero.name}
+          heroDescription={activeHero.description}
+          heroImage={`${activeHero.thumbnail.path}.${activeHero.thumbnail.extension}`}
           heroComics={activeHeroComics}
           closeHeroModal={closeHeroModal}
         />

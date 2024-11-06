@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getHeroDetails, getHeroComics } from '../../services/marvelApi';
+import { getHeroDetails, getHeroComics } from '../../src/services/marvelApi';
 
 const HeroProfile: React.FC = () => {
   const [hero, setHero] = useState<any>(null);

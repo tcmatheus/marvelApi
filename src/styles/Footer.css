@@ -1,0 +1,59 @@
+.footer {
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between; /* Distribui os itens para as extremidades */
+    align-items: center;
+    font-size: 14px;
+    position: fixed; /* Fixa o rodapé na parte inferior */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Ocupa toda a largura da tela */
+    z-index: 100;
+    box-sizing: border-box; /* Garante que o padding não afete o layout */
+}
+
+.footer .left-text,
+.footer .right-text {
+    margin: 0;
+    padding: 0 10px; /* Adiciona espaçamento entre os textos e as extremidades */
+}
+
+.footer .right-text {
+    text-align: right;
+    flex-grow: 1; /* Faz com que o texto da direita ocupe espaço necessário */
+}
+
+/* Regras responsivas */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column; /* Alinha itens em coluna */
+        text-align: center;
+        padding: 10px;
+    }
+
+    .footer .right-text {
+        text-align: center;
+        flex-grow: unset; /* Remove o comportamento de crescimento */
+        margin-top: 10px; /* Adiciona espaçamento entre os blocos */
+    }
+
+    .footer {
+        font-size: 12px; /* Ajusta o tamanho da fonte em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 8px;
+    }
+
+    .footer .left-text, .footer .right-text {
+        padding: 5px 0; /* Ajusta o espaçamento interno */
+    }
+
+    .footer {
+        font-size: 10px; /* Reduz o tamanho da fonte ainda mais para dispositivos muito pequenos */
+    }
+}
