@@ -1,66 +1,114 @@
 /* Estilo global */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Hero Card */
-  .hero-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 16px;
-    margin: 16px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .hero-thumbnail {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  /* Hero Profile */
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Card */
+.hero-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste de imagem */
+.hero-thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Hero Profile */
+.hero-profile {
+  padding: 20px;
+  background-color: white;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que os itens se reorganizem em telas menores */
+}
+
+.hero-details img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+/* Comics List */
+.comics-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.comic-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comic-thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Regras responsivas */
+@media (max-width: 768px) {
   .hero-profile {
-    padding: 20px;
-    background-color: white;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+      padding: 15px;
   }
-  
+
   .hero-details {
-    display: flex;
-    align-items: center;
+      flex-direction: column; /* Alinha itens verticalmente em telas menores */
+      text-align: center;
   }
-  
+
   .hero-details img {
-    width: 200px;
-    height: auto;
-    border-radius: 8px;
-    margin-right: 20px;
+      margin-right: 0;
+      margin-bottom: 15px; /* Adiciona espaçamento abaixo da imagem */
+      width: 150px; /* Ajusta o tamanho da imagem */
   }
-  
+
   .comics-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    margin-top: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajusta o layout da grade */
+      gap: 12px;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .hero-profile {
+      margin: 8px;
+      padding: 10px;
+  }
+
+  .hero-details img {
+      width: 100px; /* Reduz ainda mais o tamanho da imagem */
+      margin-bottom: 10px;
+  }
+
+  .comics-list {
+      grid-template-columns: 1fr; /* Exibe uma coluna em dispositivos muito pequenos */
+      gap: 8px;
+  }
+
   .comic-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      font-size: 12px; /* Reduz o tamanho da fonte para melhor adaptação */
   }
-  
-  .comic-thumbnail {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
+}

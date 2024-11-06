@@ -65,14 +65,12 @@
   filter: brightness(0.6); /* Reduz o brilho para escurecer a imagem */
 }
 
-
 /* Card de detalhes do herói */
 .hero-details-card {
   display: flex;
   background: #ffffff;
   border-radius: 20px;
   padding: 20px;
-  margin-top: -60px;
   margin: -60px 20px 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   align-items: center;
@@ -152,4 +150,92 @@
 .comic-info p {
   margin: 4px 0;
   color: #555;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .hero-modal {
+    max-width: 90%;
+    max-height: 70vh;
+  }
+
+  .hero-details-card {
+    flex-direction: column; /* Coloca a imagem e o texto em coluna */
+    align-items: flex-start; /* Alinha o conteúdo à esquerda */
+    padding: 15px;
+    margin: -40px 10px 20px;
+  }
+
+  .hero-thumbnail-modal {
+    width: 60px;
+    height: 90px; /* Reduz a imagem para melhor encaixe */
+    margin-bottom: 10px; /* Espaçamento entre a imagem e o texto */
+  }
+
+  .hero-info-modal h2 {
+    font-size: 20px; /* Ajusta o tamanho da fonte */
+  }
+
+  .modal-header-text {
+    font-size: 14px;
+    width: 250px; /* Reduz a largura do texto */
+    top: 40px; /* Ajusta a posição do texto */
+  }
+
+  .comics-list {
+    margin: 0 10px; /* Ajusta as margens */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-modal {
+    max-width: 95%;
+    max-height: 60vh;
+  }
+
+  .hero-details-card {
+    padding: 10px;
+    margin: -30px 5px 10px;
+  }
+
+  .hero-thumbnail-modal {
+    width: 50px;
+    height: 75px; /* Reduz ainda mais a imagem */
+  }
+
+  .hero-info-modal h2 {
+    font-size: 18px;
+  }
+
+  .hero-description-modal {
+    font-size: 12px; /* Reduz o tamanho da fonte */
+  }
+
+  .modal-header-text {
+    font-size: 12px;
+    top: 30px;
+    right: 10px; /* Ajusta a posição e largura */
+    width: 200px;
+  }
+
+  .comics-list {
+    gap: 10px; /* Reduz o espaçamento entre os itens */
+    margin: 0 5px;
+  }
+
+  .comic-card {
+    padding: 10px;
+    flex-direction: column; /* Alinha a imagem e o texto em coluna */
+    align-items: flex-start;
+  }
+
+  .comic-thumbnail {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px; /* Espaçamento entre a imagem e o texto */
+  }
+
+  .comic-info h4 {
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+  }
 }

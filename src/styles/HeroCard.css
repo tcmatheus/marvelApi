@@ -11,6 +11,11 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  transition: transform 0.2s; /* Adiciona uma leve animação ao passar o mouse */
+}
+
+.hero-card:hover {
+  transform: scale(1.02); /* Aumenta levemente o card ao passar o mouse */
 }
 
 .hero-thumbnail {
@@ -52,4 +57,56 @@
   height: 60px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Regras responsivas */
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+
+  .hero-thumbnail {
+    height: 200px; /* Ajusta a altura da imagem */
+  }
+
+  .hero-header h3 {
+    font-size: 16px; /* Reduz o tamanho da fonte */
+  }
+
+  .hero-card p {
+    font-size: 13px; /* Ajusta o tamanho da fonte */
+    height: 50px; /* Ajusta a altura do parágrafo */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-card {
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+
+  .hero-thumbnail {
+    height: 150px; /* Reduz a altura da imagem */
+    border-radius: 8px; /* Ajusta o arredondamento em telas menores */
+  }
+
+  .hero-header {
+    flex-direction: column; /* Organiza o título e o ícone em coluna */
+    align-items: flex-start; /* Alinha o título à esquerda */
+  }
+
+  .hero-header h3 {
+    font-size: 14px; /* Reduz ainda mais o tamanho da fonte */
+  }
+
+  .favorite-icon {
+    font-size: 1.2em; /* Reduz o tamanho do ícone */
+    margin-top: 4px; /* Adiciona espaço entre o ícone e o título */
+  }
+
+  .hero-card p {
+    font-size: 12px; /* Reduz o tamanho da fonte */
+    height: 40px; /* Reduz a altura do parágrafo */
+  }
 }

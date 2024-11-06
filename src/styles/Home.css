@@ -1,18 +1,48 @@
 .home-container {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
+  text-align: center;
+  margin: 20px 0;
+}
+
+.home-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.home-subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
   .home-title {
-    font-size: 36px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 28px; /* Reduz o tamanho da fonte em tablets */
   }
-  
+
   .home-subtitle {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 30px;
+    font-size: 16px; /* Ajusta o tamanho da fonte da legenda */
+    margin-bottom: 20px; /* Reduz o espaçamento inferior */
   }
-  
+
+  .home-container {
+    margin: 15px 0; /* Ajusta as margens para telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-title {
+    font-size: 24px; /* Reduz ainda mais o tamanho da fonte em smartphones */
+  }
+
+  .home-subtitle {
+    font-size: 14px; /* Ajusta o tamanho da fonte da legenda */
+    margin-bottom: 15px; /* Reduz o espaçamento inferior */
+  }
+
+  .home-container {
+    margin: 10px 0; /* Ajusta as margens para telas muito pequenas */
+  }
+}

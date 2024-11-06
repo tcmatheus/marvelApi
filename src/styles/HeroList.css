@@ -136,4 +136,48 @@ h1 {
   .search-bar input {
     max-width: 100%;
   }
+
+  .hero-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta a grade para telas menores */
+    gap: 16px; /* Reduz o espaçamento entre os cards */
+  }
+
+  .hero-card .hero-name {
+    font-size: 16px; /* Reduz o tamanho da fonte para melhor ajuste */
+  }
+
+  .hero-card img {
+    height: 180px; /* Reduz a altura da imagem */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-list-container {
+    padding: 10px; /* Reduz o padding para dispositivos menores */
+  }
+
+  .search-bar {
+    margin-bottom: 15px;
+  }
+
+  .hero-cards-grid {
+    grid-template-columns: 1fr; /* Exibe uma coluna única em dispositivos muito pequenos */
+    gap: 12px; /* Reduz o espaçamento entre os cards */
+  }
+
+  .hero-card {
+    padding: 10px; /* Reduz o padding do card */
+  }
+
+  .hero-card .hero-name {
+    font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+
+  .hero-card img {
+    height: 150px; /* Reduz ainda mais a altura da imagem */
+  }
+
+  .favorites-text {
+    font-size: 14px; /* Ajusta o tamanho da fonte para a seção de favoritos */
+  }
 }
