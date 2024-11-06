@@ -1,0 +1,149 @@
+/* src/components/HeroCard.css */
+
+/* Estilos para o modal de detalhes do herói */
+.hero-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+  max-height: 90vh;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Estilos para o card principal do herói */
+.hero-card {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-thumbnail {
+  width: 100%;
+  height: 250px; /* Altura fixa para criar o formato quadrado */
+  object-fit: cover;
+  border-radius: 12px; /* Deixe as bordas levemente arredondadas */
+}
+
+.hero-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Garante alinhamento correto */
+  width: 100%;
+  margin-top: 12px;
+}
+
+.hero-header h3 {
+  margin: 0;
+  font-size: 18px; /* Ajuste o tamanho conforme necessário */
+  font-weight: 600;
+  text-align: left; /* Alinha à esquerda */
+}
+
+.favorite-icon {
+  font-size: 1.5em;
+  color: #d1d1d1; /* Cor do coração não preenchido */
+  cursor: pointer;
+}
+
+.favorite-icon.filled {
+  color: red; /* Cor do coração preenchido */
+}
+
+.hero-card p {
+  font-size: 14px; /* Ajuste do tamanho da fonte */
+  color: #666;
+  margin-top: 8px;
+  text-align: justify; /* Justifica o texto para melhorar a aparência */
+  height: 60px; /* Limita a altura para manter o layout consistente */
+  overflow: hidden; /* Oculta o excesso de texto */
+  text-overflow: ellipsis; /* Adiciona "..." no final do texto */
+}
+
+/* Lista de quadrinhos */
+.comics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comic-card {
+  display: flex;
+  gap: 16px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comic-thumbnail {
+  width: 100px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.comic-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comic-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.comic-info p {
+  font-size: 14px;
+  color: #666;
+  margin: 4px 0;
+}
+
+.comic-info p.release-date,
+.comic-info p.page-count {
+  font-size: 12px;
+  color: #999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comic-info p.release-date::before {
+  content: "📅";
+}
+
+.comic-info p.page-count::before {
+  content: "📄";
+}
