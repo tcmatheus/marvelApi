@@ -39,6 +39,14 @@ https://developer.marvel.com/
 e depois entre em https://developer.marvel.com/account
 ```
 
+## Como rodar os teste
+1- Clone o repositorio em sua maquina
+ ```bash
+  npm run cypress:open  ( com interface )
+  npm run cypress:run   ( Via terminal )
+
+   ```
+
 ## Tecnologias usadas 
 ```bash
 Dependências de Produção:
