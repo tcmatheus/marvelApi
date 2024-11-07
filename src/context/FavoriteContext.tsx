@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState } from 'react'; // Removi useEffect
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-interface Hero {
+export interface Hero {
   id: string;
   name: string;
   description: string;
@@ -15,6 +15,10 @@ interface FavoriteContextType {
   toggleFavorite: (hero: Hero) => void;
 }
 
+interface FavoriteProviderProps {
+  children: ReactNode; // Defina o tipo de `children` corretamente
+}
+
 const FavoriteContext = createContext<FavoriteContextType | undefined>(undefined);
 
 export const useFavorites = () => {
@@ -25,7 +29,7 @@ export const useFavorites = () => {
   return context;
 };
 
-export const FavoriteProvider: React.FC = ({ children }) => {
+export const FavoriteProvider: React.FC<FavoriteProviderProps> = ({ children }) => {
   const [favorites, setFavorites] = useState<Hero[]>(() => {
     if (typeof window !== 'undefined') {
       const storedFavorites = localStorage.getItem('favorites');

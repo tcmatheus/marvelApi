@@ -5,11 +5,10 @@ import '../styles/HeroModal.css';
 import '../styles/Home.css';
 import '../styles/Footer.css'; // Importe o CSS global do rodapé aqui
 import Footer from '../components/Footer';
-
-// Importação do FavoriteProvider (se você estiver usando)
 import { FavoriteProvider } from '../context/FavoriteContext';
+import { AppProps } from 'next/app';
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <FavoriteProvider>
       <Component {...pageProps} />

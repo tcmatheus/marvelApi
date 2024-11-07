@@ -21,15 +21,28 @@ const api = axios.create({
   baseURL: 'https://gateway.marvel.com/v1/public/',
 });
 
+interface Thumbnail {
+  path: string;
+  extension: string;
+}
+
 interface Hero {
   id: string;
   name: string;
   description: string;
-  thumbnail: {
-    path: string;
-    extension: string;
-  };
+  thumbnail: Thumbnail;
 }
+
+interface Comic {
+  id: string;
+  title: string;
+  description: string | null;
+  pageCount: number;
+  thumbnail: Thumbnail;
+  dates: Array<{ type: string; date: string }>;
+}
+
+
 
 export const getHeroes = async (limit: number, offset: number, searchTerm: string = ''): Promise<Hero[]> => {
   try {
@@ -48,13 +61,13 @@ export const getHeroes = async (limit: number, offset: number, searchTerm: strin
       ...hero,
       description: hero.description.trim() || 'Descrição não disponível.',
     }));
-  } catch (error) {
-    console.error('Error fetching Marvel heroes:', error.response?.data || error.message);
+  } catch {
+    console.error('Error fetching Marvel heroes.');
     return [];
   }
 };
 
-export const getHeroComics = async (heroId: string): Promise<any[]> => {
+export const getHeroComics = async (heroId: string): Promise<Comic[]> => {
   try {
     const response = await api.get(`characters/${heroId}/comics`, {
       params: {
@@ -64,9 +77,28 @@ export const getHeroComics = async (heroId: string): Promise<any[]> => {
         limit: 5,
       },
     });
-    return response.data.data.results;
-  } catch (error) {
-    console.error('Error fetching comics for hero:', error.response?.data || error.message);
+    return response.data.data.results.map((comic: Comic) => ({
+      ...comic,
+      description: comic.description || 'Descrição não disponível.', // Mantém um fallback caso seja null
+    }));
+  } catch {
+    console.error('Error fetching comics for hero.');
     return [];
   }
 };
+
+// Verifique se a função está implementada e exportada corretamente
+export const getHeroDetails = async (id: string) => {
+  // Implemente a função conforme necessário, exemplo:
+  const response = await api.get(`characters/${id}`, {
+    params: {
+      apikey: PUBLIC_KEY,
+      ts: TS,
+      hash: HASH,
+    },
+  });
+  return response.data.data.results[0]; // Assumindo que você quer o primeiro resultado
+};
+
+
+

@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { Hero, Comic } from '../interface/types'; // Importe as interfaces necessárias
 import { useFavorites } from '../context/FavoriteContext';
-import { getHeroes } from '../services/marvelApi';
+import { getHeroes, getHeroComics } from '../services/marvelApi';
 import HeroCard from './HeroCard';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import HeroModal from './HeroModal';
-import { getHeroComics } from '../services/marvelApi';
 import { FaHeart, FaSearch } from 'react-icons/fa';
 
 const HeroList: React.FC = () => {
+  const [heroes, setHeroes] = useState<Hero[]>([]);
+  const [activeHeroComics, setActiveHeroComics] = useState<Comic[]>([]); // Mantenha apenas uma declaração
   const { favorites, toggleFavorite } = useFavorites();
-  const [heroes, setHeroes] = useState<any[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState('');
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-  const [activeHero, setActiveHero] = useState<any | null>(null);
-  const [activeHeroComics, setActiveHeroComics] = useState<any[]>([]);
+  const [activeHero, setActiveHero] = useState<Hero | null>(null);
 
   // Função para buscar heróis da API
   const fetchHeroes = async (page: number, searchTerm: string = '') => {
     try {
       const newHeroes = await getHeroes(20, page * 20, searchTerm);
-      const heroesWithDescriptions = newHeroes.map(hero => ({
+      const heroesWithDescriptions = newHeroes.map((hero: Hero) => ({
         ...hero,
         description: hero.description || 'Descrição não disponível.',
       }));
@@ -49,18 +49,15 @@ const HeroList: React.FC = () => {
     setPage(0);
   };
 
-  const displayedHeroes = showFavoritesOnly
-    ? favorites // Exibe apenas os favoritos do contexto
-    : heroes;
+  const displayedHeroes = showFavoritesOnly ? favorites : heroes;
 
   // Função para abrir o modal do herói e buscar seus quadrinhos
-  const openHeroModal = async (hero: any) => {
+  const openHeroModal = async (hero: Hero) => {
     setActiveHero(hero);
     const heroComics = await getHeroComics(hero.id);
     setActiveHeroComics(heroComics);
   };
 
-  // Função para fechar o modal
   const closeHeroModal = () => {
     setActiveHero(null);
     setActiveHeroComics([]);
@@ -94,15 +91,15 @@ const HeroList: React.FC = () => {
         endMessage={<p style={{ textAlign: 'center' }}>Fim dos heróis</p>}
       >
         <div className="hero-cards-grid">
-          {displayedHeroes.map(hero => (
+          {displayedHeroes.map((hero) => (
             <HeroCard
-              key={hero.id}
-              hero={hero}
-              onToggleFavorite={toggleFavorite}
-              openHeroModal={() => openHeroModal(hero)}
-              closeHeroModal={closeHeroModal}
-              isActive={activeHero?.id === hero.id}
-            />
+            key={hero.id}
+            hero={hero}
+            onToggleFavorite={toggleFavorite}
+            openHeroModal={() => openHeroModal(hero)}
+            isActive={activeHero?.id === hero.id}
+          />
+          
           ))}
         </div>
       </InfiniteScroll>
