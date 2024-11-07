@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Hero, Comic } from '../interface/types'; // Importe as interfaces necessárias
 import { useFavorites } from '../context/FavoriteContext';
-import { getHeroes, getHeroComics } from '../services/marvelApi';
+import { getHeroes, getHeroComics } from '../services/marvelApiClient';
 import HeroCard from './HeroCard';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import HeroModal from './HeroModal';

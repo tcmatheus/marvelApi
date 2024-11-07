@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image'; // Import para substituir <img>
-import { getHeroDetails, getHeroComics } from '../../services/marvelApi';
+import { getHeroDetails, getHeroComics } from '../../services/marvelApiClient';
 
 const HeroProfile: React.FC = () => {
   const [hero, setHero] = useState<{
