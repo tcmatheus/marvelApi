@@ -39,6 +39,7 @@ e depois entre em https://developer.marvel.com/account
 ```
 
 ## Tecnologias usadas 
+```bash
 Dependências de Produção:
 Axios (^1.7.7): Biblioteca para fazer requisições HTTP de forma simples.
 dotenv (^16.4.5): Carrega variáveis de ambiente a partir de um arquivo .env para process.env.
@@ -58,7 +59,7 @@ Cypress (^13.15.2): Ferramenta de teste de ponta a ponta para aplicações web.
 ESLint (^8): Ferramenta de linting para garantir a qualidade e consistência do código.
 ESLint Config Next (15.0.2): Configuração de ESLint específica para projetos Next.js.
 TypeScript (^5): Superset do JavaScript que adiciona tipagem estática opcional.
-
+```
 --------------------
 
 ## PS: deixei um erro que nao influencia no sistema para ver se o codigo do cypress estava correto
